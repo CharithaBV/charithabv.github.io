@@ -1,4 +1,4 @@
-name: Build and Deploy to Pages
+name: Deploy Static Content to Pages
 
 on:
   push:
@@ -26,18 +26,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Build site
-        run: |
-          mkdir -p _site
-          docker run \
-            -v ${{ github.workspace }}:/srv/jekyll \
-            -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
-            jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future"
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './_site'
+          path: '.'
 
       - name: Deploy to GitHub Pages
         id: deployment
