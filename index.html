@@ -8,39 +8,83 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
+        :root {
+            --bg-color: #fafafa;
+            --text-color: #334155;
+            --text-heading: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --card-bg: #f8fafc;
+            --badge-bg: #ffffff;
+            --badge-text: #334155;
+            --badge-border: #e2e8f0;
+            --bar-bg: rgba(255, 255, 255, 0.8);
+            --bar-border: rgba(226, 232, 240, 0.8);
+            --dropdown-bg: rgba(255, 255, 255, 0.95);
+            --hover-bg: rgba(15, 23, 42, 0.05);
+            --primary-accent: #0f172a;
+            --timeline-dot: #94a3b8;
+            --timeline-line: #e2e8f0;
+            --pill-date-bg: #e2e8f0;
+            --pill-date-text: #475569;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0f172a;
+            --text-color: #cbd5e1;
+            --text-heading: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --card-bg: #1e293b;
+            --badge-bg: #1e293b;
+            --badge-text: #cbd5e1;
+            --badge-border: #334155;
+            --bar-bg: rgba(15, 23, 42, 0.8);
+            --bar-border: rgba(51, 65, 85, 0.8);
+            --dropdown-bg: rgba(30, 41, 59, 0.95);
+            --hover-bg: rgba(255, 255, 255, 0.08);
+            --primary-accent: #f8fafc;
+            --timeline-dot: #64748b;
+            --timeline-line: #334155;
+            --pill-date-bg: #334155;
+            --pill-date-text: #cbd5e1;
+        }
+
         body {
             font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.7;
-            color: #334155;
+            color: var(--text-color);
             max-width: 800px;
             margin: 0 auto;
             padding: 3rem 2rem;
-            background-color: #fafafa;
+            background-color: var(--bg-color);
             scroll-behavior: smooth;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         h1, h2, h3, h4 {
-            color: #0f172a;
+            color: var(--text-heading);
             font-weight: 600;
             letter-spacing: -0.02em;
+            transition: color 0.3s ease;
         }
 
         h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 0.5rem; }
-        h2 { color: #475569; font-size: 1.2rem; font-weight: 500; margin-top: 0; margin-bottom: 1.5rem; }
-        h3 { color: #0f172a; font-size: 1.4rem; margin-top: 3.5rem; margin-bottom: 1.5rem; border-left: 3px solid #0f172a; padding-left: 0.75rem; scroll-margin-top: 80px; }
-        h4 { color: #1e293b; margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 1.1rem; }
+        h2 { color: var(--text-muted); font-size: 1.2rem; font-weight: 500; margin-top: 0; margin-bottom: 1.5rem; }
+        h3 { color: var(--text-heading); font-size: 1.4rem; margin-top: 3.5rem; margin-bottom: 1.5rem; border-left: 3px solid var(--primary-accent); padding-left: 0.75rem; scroll-margin-top: 80px; }
+        h4 { color: var(--text-heading); margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 1.1rem; }
         
         p { margin-top: 1rem; font-size: 1.05rem; text-align: justify; }
         ul { padding-left: 1.2rem; }
         li { margin-bottom: 0.6rem; }
         
-        .highlight { font-weight: 600; color: #0f172a; }
+        .highlight { font-weight: 600; color: var(--text-heading); }
 
         /* Modern Hero Header */
         .hero {
             margin-bottom: 3rem;
             padding-bottom: 2rem;
-            border-bottom: 1px solid #e2e8f0;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .contact-bar {
@@ -55,7 +99,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            color: #64748b;
+            color: var(--text-muted);
             text-decoration: none;
             font-size: 0.9rem;
             font-weight: 500;
@@ -63,7 +107,7 @@
         }
 
         .contact-item:hover {
-            color: #0f172a;
+            color: var(--text-heading);
         }
 
         .contact-item svg {
@@ -73,17 +117,18 @@
 
         /* Summary Card */
         .summary-card {
-            background-color: #f8fafc;
-            border: 1px solid #e2e8f0;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
             padding: 1.5rem;
             margin: 2.5rem 0;
             border-radius: 12px;
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.02);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
         .summary-card strong {
             display: block;
             font-size: 1.05rem;
-            color: #0f172a;
+            color: var(--text-heading);
             margin-bottom: 1rem;
             font-weight: 600;
         }
@@ -102,15 +147,15 @@
             font-size: 0.95rem;
         }
         .summary-card a {
-            color: #0f172a;
+            color: var(--text-heading);
             text-decoration: none;
             font-weight: 600;
-            border-bottom: 1px solid #cbd5e1;
+            border-bottom: 1px solid var(--border-color);
             transition: all 0.2s ease;
         }
         .summary-card a:hover {
-            color: #475569;
-            border-bottom-color: #475569;
+            color: var(--text-muted);
+            border-bottom-color: var(--text-muted);
         }
 
         /* Highlights */
@@ -130,8 +175,43 @@
             content: "✦";
             position: absolute;
             left: 0;
-            color: #64748b;
+            color: var(--text-muted);
             font-weight: bold;
+        }
+
+        /* Filter Controls */
+        .filter-container {
+            display: flex;
+            gap: 0.5rem;
+            margin: 1.5rem 0;
+            padding: 0.25rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            width: max-content;
+            max-width: 100%;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        .filter-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        .filter-btn:hover {
+            color: var(--text-heading);
+        }
+        .filter-btn.active {
+            background: var(--badge-bg);
+            color: var(--text-heading);
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
         }
 
         /* Timeline / Project List */
@@ -144,7 +224,11 @@
         .timeline-item {
             position: relative;
             padding-bottom: 2rem;
-            border-bottom: 1px solid #e2e8f0;
+            border-bottom: 1px solid var(--border-color);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .timeline-item.hidden {
+            display: none;
         }
         .timeline-item:last-child {
             border-bottom: none;
@@ -167,22 +251,23 @@
         .timeline-title {
             font-size: 1.15rem;
             font-weight: 700;
-            color: #0f172a;
+            color: var(--text-heading);
         }
         .timeline-meta {
             font-size: 0.95rem;
-            color: #64748b;
+            color: var(--text-muted);
             font-weight: 500;
             margin-top: 0.25rem;
         }
         .timeline-date {
             font-size: 0.85rem;
-            color: #475569;
+            color: var(--pill-date-text);
             font-weight: 600;
-            background: #e2e8f0;
+            background: var(--pill-date-bg);
             padding: 0.3rem 0.75rem;
             border-radius: 9999px;
             white-space: nowrap;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         .timeline-desc {
             margin-top: 0.5rem;
@@ -199,7 +284,7 @@
             display: grid;
             gap: 0.25rem;
             padding-bottom: 1.5rem;
-            border-bottom: 1px solid #e2e8f0;
+            border-bottom: 1px solid var(--border-color);
         }
         .education-item:last-child {
             border-bottom: none;
@@ -221,25 +306,26 @@
         .edu-degree {
             font-size: 1.15rem;
             font-weight: 700;
-            color: #0f172a;
+            color: var(--text-heading);
         }
         .edu-school {
             font-size: 1rem;
-            color: #475569;
+            color: var(--text-muted);
             font-weight: 500;
         }
         .edu-date {
             font-size: 0.85rem;
-            color: #475569;
+            color: var(--pill-date-text);
             font-weight: 600;
-            background: #e2e8f0;
+            background: var(--pill-date-bg);
             padding: 0.3rem 0.75rem;
             border-radius: 9999px;
             white-space: nowrap;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         .edu-details {
             font-size: 0.95rem;
-            color: #64748b;
+            color: var(--text-muted);
             font-style: italic;
             margin-top: 0.25rem;
         }
@@ -256,15 +342,15 @@
             padding-left: 0;
         }
         .research-item a {
-            color: #0f172a;
+            color: var(--text-heading);
             text-decoration: none;
             font-weight: 600;
-            border-bottom: 1px solid #cbd5e1;
+            border-bottom: 1px solid var(--border-color);
             transition: all 0.2s ease;
         }
         .research-item a:hover {
-            color: #475569;
-            border-bottom-color: #475569;
+            color: var(--text-muted);
+            border-bottom-color: var(--text-muted);
         }
 
         /* Skills Badges */
@@ -273,15 +359,16 @@
             gap: 1.5rem;
         }
         .skills-category {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
             padding: 1.25rem;
             border-radius: 12px;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
         .skills-category h4 {
             margin-top: 0;
             margin-bottom: 0.75rem;
-            color: #0f172a;
+            color: var(--text-heading);
             font-size: 1rem;
             font-weight: 600;
         }
@@ -291,9 +378,9 @@
             gap: 0.5rem;
         }
         .skill-badge {
-            background-color: #ffffff;
-            color: #334155;
-            border: 1px solid #e2e8f0;
+            background-color: var(--badge-bg);
+            color: var(--badge-text);
+            border: 1px solid var(--badge-border);
             padding: 0.35rem 0.75rem;
             border-radius: 9999px;
             font-size: 0.85rem;
@@ -301,8 +388,8 @@
             transition: all 0.2s ease;
         }
         .skill-badge:hover {
-            border-color: #94a3b8;
-            color: #0f172a;
+            border-color: var(--text-muted);
+            color: var(--text-heading);
         }
 
         /* Top Bar Styles */
@@ -311,28 +398,50 @@
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.8);
+            background: var(--bar-bg);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
-            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+            border-bottom: 1px solid var(--bar-border);
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0.75rem 2rem;
             z-index: 1000;
             transform: translateY(-100%);
-            transition: transform 0.3s ease-in-out;
+            transition: transform 0.3s ease-in-out, background-color 0.3s ease, border-color 0.3s ease;
             box-sizing: border-box;
         }
         #top-bar.visible { transform: translateY(0); }
-        #top-bar .name { font-weight: 600; font-size: 1.1rem; color: #0f172a; }
+        
+        .name-container {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--text-heading);
+        }
+        .name-container .name {
+            font-weight: 700;
+        }
+        .section-indicator {
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.95rem;
+            display: none;
+        }
+        @media(min-width: 480px) {
+            .section-indicator {
+                display: inline;
+            }
+        }
         
         /* Dropdown Styles */
         .dropdown { position: relative; display: inline-block; }
         .dropbtn {
             background: transparent;
-            color: #0f172a;
+            color: var(--text-heading);
             border: none;
             padding: 0.5rem;
             cursor: pointer;
@@ -340,15 +449,15 @@
             align-items: center;
             justify-content: center;
             border-radius: 6px;
-            transition: background-color 0.2s ease;
+            transition: background-color 0.2s ease, color 0.2s ease;
         }
         .dropbtn:hover {
-            background-color: rgba(15, 23, 42, 0.08);
+            background-color: var(--hover-bg);
         }
         .dropdown-content {
             display: none;
             position: absolute;
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: var(--dropdown-bg);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             min-width: 180px;
@@ -356,20 +465,46 @@
             z-index: 1;
             border-radius: 6px;
             margin-top: 5px;
-            border: 1px solid rgba(226, 232, 240, 0.8);
+            border: 1px solid var(--bar-border);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
         .dropdown-content a {
-            color: #334155;
+            color: var(--text-color);
             padding: 10px 16px;
             text-decoration: none;
             display: block;
             font-size: 0.9rem;
-            transition: background-color 0.2s;
+            transition: background-color 0.2s, color 0.2s;
         }
-        .dropdown-content a:hover { background-color: rgba(15, 23, 42, 0.05); color: #0f172a; }
+        .dropdown-content a:hover { background-color: var(--hover-bg); color: var(--text-heading); }
         .dropdown-content.show { display: block; }
 
-        footer { margin-top: 4rem; font-size: 0.85rem; color: #64748b; border-top: 1px solid #e2e8f0; padding-top: 1.5rem; }
+        /* Theme Toggle Button */
+        .theme-toggle {
+            background: transparent;
+            border: none;
+            color: var(--text-heading);
+            padding: 0.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            transition: background-color 0.2s, color 0.2s;
+        }
+        .theme-toggle:hover {
+            background-color: var(--hover-bg);
+        }
+        .theme-toggle svg {
+            width: 20px;
+            height: 20px;
+        }
+        .sun-icon { display: none; }
+        .moon-icon { display: block; }
+        [data-theme="dark"] .sun-icon { display: block; }
+        [data-theme="dark"] .moon-icon { display: none; }
+
+        footer { margin-top: 4rem; font-size: 0.85rem; color: var(--text-muted); border-top: 1px solid var(--border-color); padding-top: 1.5rem; transition: border-color 0.3s ease, color 0.3s ease; }
     </style>
 </head>
 <body>
@@ -390,8 +525,28 @@
                 <a href="#skills">Skills</a>
             </div>
         </div>
-        <div class="name">Charitha Reddy</div>
-        <div style="width: 36px;"></div> <!-- Spacer for balance matching the button dimensions -->
+        
+        <div class="name-container">
+            <span class="name">Charitha Reddy</span>
+            <span class="section-indicator"></span>
+        </div>
+
+        <button class="theme-toggle" aria-label="Toggle Theme">
+            <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+        </button>
     </div>
 
     <div class="hero">
@@ -462,8 +617,15 @@
     </ul>
 
     <h3 id="experience">Professional Experience</h3>
+    
+    <div class="filter-container">
+        <button class="filter-btn active" data-filter="all">All Focus</button>
+        <button class="filter-btn" data-filter="product">Product & Strategy</button>
+        <button class="filter-btn" data-filter="embedded">Embedded & Engineering</button>
+    </div>
+
     <div class="timeline">
-        <div class="timeline-item">
+        <div class="timeline-item" data-category="product">
             <div class="timeline-header">
                 <div>
                     <span class="timeline-title">Claims Handler (Recoveries)</span>
@@ -474,7 +636,7 @@
             <p class="timeline-desc">Managing high-volume recovery claims through critical problem-solving and strategic decision-making. Facilitating end-to-end communication between insured parties, third-party insurers, and stakeholders using advanced virtual claim management tools. Demonstrated high adaptability and software proficiency in a fast-paced environment while ensuring operational accuracy and risk mitigation.</p>
         </div>
 
-        <div class="timeline-item">
+        <div class="timeline-item" data-category="product">
             <div class="timeline-header">
                 <div>
                     <span class="timeline-title">Technical Product Manager</span>
@@ -485,7 +647,7 @@
             <p class="timeline-desc">Full roadmap strategy ownership, backlog prioritization, user story definition, and cross-functional pod management for a fast-growing B2C product line. Directed product pipeline integration to accelerate release cadences and drove software experimentation to validate feature directions.</p>
         </div>
 
-        <div class="timeline-item">
+        <div class="timeline-item" data-category="product">
             <div class="timeline-header">
                 <div>
                     <span class="timeline-title">Strategic Consultant</span>
@@ -496,7 +658,7 @@
             <p class="timeline-desc">Conducted user segmentation and funnel analysis to map drop-off trends, delivering a comprehensive strategic report that optimized content reach by an estimated 25% and boosted engagement.</p>
         </div>
 
-        <div class="timeline-item">
+        <div class="timeline-item" data-category="product">
             <div class="timeline-header">
                 <div>
                     <span class="timeline-title">Strategic Lead (Business Simulation)</span>
@@ -507,7 +669,7 @@
             <p class="timeline-desc">Led a virtual automotive enterprise in a competitive market simulation, overseeing technical customization, cost optimization, and R&D. Developed a strategic grant proposal for manufacturing retrofit kits and managed financial equity to achieve a Top 6 overall ranking. <br>• <a href="https://drive.google.com/file/d/1VUiME-0DOY8nlQmQccGQa4IQpcCDM4jH/view?usp=sharing" target="_blank">View Presentation</a> | <a href="https://drive.google.com/file/d/1KvNx1DDTGCauZAztUpW7JObvPeME2xEb/view?usp=sharing" target="_blank">View Reflective Poster</a></p>
         </div>
 
-        <div class="timeline-item">
+        <div class="timeline-item" data-category="product">
             <div class="timeline-header">
                 <div>
                     <span class="timeline-title">Digital Marketing Strategist</span>
@@ -518,7 +680,7 @@
             <p class="timeline-desc">Developed an integrated marketing strategy for "The Bears of Blueberry Forest" to promote children's mental health. Defined SMART goals for community engagement across social platforms and mapped a roadmap for global franchise scalability. <br>• <a href="https://drive.google.com/file/d/13p_c2FCjYzzNXGNFiF7yFVvd4-RRtjrq/view?usp=sharing" target="_blank">View Project Report</a></p>
         </div>
 
-        <div class="timeline-item">
+        <div class="timeline-item" data-category="embedded">
             <div class="timeline-header">
                 <div>
                     <span class="timeline-title">Embedded Systems Engineer</span>
@@ -529,7 +691,7 @@
             <p class="timeline-desc">Designed and implemented automated fault detection architectures for the heavy industrial Oil & Gas sector, improving deployment efficiency by 20%. Led cross-functional teams in Python automation workflows and system-level debugging across edge cameras and hardware platforms.</p>
         </div>
 
-        <div class="timeline-item">
+        <div class="timeline-item" data-category="embedded">
             <div class="timeline-header">
                 <div>
                     <span class="timeline-title">Electronics Engineer Intern</span>
@@ -638,6 +800,7 @@
         const dropbtn = document.querySelector('.dropbtn');
         const dropdownContent = document.querySelector('.dropdown-content');
 
+        // Scroll Observer
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (!entry.isIntersecting) {
@@ -651,6 +814,7 @@
 
         observer.observe(mainName);
 
+        // Menu Toggle
         dropbtn.addEventListener('click', (e) => {
             e.stopPropagation();
             dropdownContent.classList.toggle('show');
@@ -666,6 +830,75 @@
             link.addEventListener('click', () => {
                 dropdownContent.classList.remove('show');
             });
+        });
+
+        // Theme Switcher
+        const themeToggle = document.querySelector('.theme-toggle');
+        const storedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+        if (storedTheme) {
+            document.documentElement.setAttribute('data-theme', storedTheme);
+        }
+
+        themeToggle.addEventListener('click', () => {
+            let current = document.documentElement.getAttribute('data-theme');
+            let target = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', target);
+            localStorage.setItem('theme', target);
+        });
+
+        // Interactive Timeline Filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const timelineItems = document.querySelectorAll('.timeline-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filterVal = btn.getAttribute('data-filter');
+
+                timelineItems.forEach(item => {
+                    if (filterVal === 'all' || item.getAttribute('data-category') === filterVal) {
+                        item.classList.remove('hidden');
+                        setTimeout(() => { item.style.opacity = '1'; }, 50);
+                    } else {
+                        item.style.opacity = '0';
+                        item.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // Dynamic Scroll-Spy
+        const sections = document.querySelectorAll('h3, .hero');
+        const sectionIndicator = document.querySelector('.section-indicator');
+
+        window.addEventListener('scroll', () => {
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.scrollY >= sectionTop - 120) {
+                    if (section.id) {
+                        currentSection = section.id;
+                    } else if (section.classList.contains('hero')) {
+                        currentSection = 'home';
+                    }
+                }
+            });
+
+            if (currentSection && currentSection !== 'home') {
+                const sectionNames = {
+                    highlights: '• Highlights',
+                    experience: '• Experience',
+                    education: '• Education',
+                    research: '• Research',
+                    skills: '• Skills'
+                };
+                sectionIndicator.textContent = sectionNames[currentSection] || '';
+            } else {
+                sectionIndicator.textContent = '';
+            }
         });
     </script>
 </body>
