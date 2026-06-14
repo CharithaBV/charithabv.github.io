@@ -404,6 +404,7 @@
         /* Skills Badges Grid */
         .skills-grid {
             display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 1.5rem;
         }
         .skills-category {
@@ -618,11 +619,11 @@
                 </svg>
             </button>
             <div class="dropdown-content">
+                <a href="#skills">Skills</a>
                 <a href="#highlights">Highlights</a>
                 <a href="#experience">Experience</a>
                 <a href="#education">Education</a>
                 <a href="#research">Research</a>
-                <a href="#skills">Skills</a>
             </div>
         </div>
         
@@ -672,6 +673,41 @@
     <p>I am a dynamic professional bridging engineering complexity with high-level business strategy. With a unique dual-postgraduate background (an <strong>M.Sc. in Management (Distinction)</strong> from the University of Liverpool and an <strong>M.Tech in Industrial Intelligent Systems</strong>), I specialize in translating technical capabilities into actionable product roadmaps.</p>
 
     <p>My expertise spans across <strong>Python engineering, automated fault detection, and cloud infrastructures (GCP/Azure)</strong>, coupled with advanced project management proficiencies (Agile, Scrum, EVM). I am passionate about responsible AI deployment, industrial efficiency, and driving product innovation from concept to market.</p>
+
+    <h3 id="skills">Skills & Competencies</h3>
+    <div class="skills-grid">
+        <div class="skills-category">
+            <h4>Product & Strategy</h4>
+            <div class="skills-badges">
+                <span class="skill-badge">Agile/Scrum Leadership</span>
+                <span class="skill-badge">Roadmap Strategy</span>
+                <span class="skill-badge">Backlog Prioritization</span>
+                <span class="skill-badge">EVM/PERT/GANTT</span>
+                <span class="skill-badge">TAM/UTAUT Frameworks</span>
+            </div>
+        </div>
+
+        <div class="skills-category">
+            <h4>Technical & Analytical</h4>
+            <div class="skills-badges">
+                <span class="skill-badge">Python Engineering</span>
+                <span class="skill-badge">Scikit-learn Modeling</span>
+                <span class="skill-badge">SQL Architecture</span>
+                <span class="skill-badge">Data Analytics</span>
+                <span class="skill-badge">Hypothesis Testing</span>
+                <span class="skill-badge">Qlik Cloud</span>
+            </div>
+        </div>
+
+        <div class="skills-category">
+            <h4>Cloud & Infrastructure</h4>
+            <div class="skills-badges">
+                <span class="skill-badge">Microsoft Azure IoT Hub</span>
+                <span class="skill-badge">Google Cloud Platform (GCP)</span>
+                <span class="skill-badge">Embedded Linux Package Managers</span>
+            </div>
+        </div>
+    </div>
 
     <div class="summary-card">
         <strong>Featured Research & Publications</strong>
@@ -846,41 +882,6 @@
                 <span class="highlight">Methods & Frameworks:</span> Engineered automated condition monitoring pipelines, image segmentation engines, and supervised model deployments achieving up to 97.2% accuracy.
             </li>
         </ul>
-    </div>
-
-    <h3 id="skills">Skills & Competencies</h3>
-    <div class="skills-grid">
-        <div class="skills-category">
-            <h4>Product & Strategy</h4>
-            <div class="skills-badges">
-                <span class="skill-badge">Agile/Scrum Leadership</span>
-                <span class="skill-badge">Roadmap Strategy</span>
-                <span class="skill-badge">Backlog Prioritization</span>
-                <span class="skill-badge">EVM/PERT/GANTT</span>
-                <span class="skill-badge">TAM/UTAUT Frameworks</span>
-            </div>
-        </div>
-
-        <div class="skills-category">
-            <h4>Technical & Analytical</h4>
-            <div class="skills-badges">
-                <span class="skill-badge">Python Engineering</span>
-                <span class="skill-badge">Scikit-learn Modeling</span>
-                <span class="skill-badge">SQL Architecture</span>
-                <span class="skill-badge">Data Analytics</span>
-                <span class="skill-badge">Hypothesis Testing</span>
-                <span class="skill-badge">Qlik Cloud</span>
-            </div>
-        </div>
-
-        <div class="skills-category">
-            <h4>Cloud & Infrastructure</h4>
-            <div class="skills-badges">
-                <span class="skill-badge">Microsoft Azure IoT Hub</span>
-                <span class="skill-badge">Google Cloud Platform (GCP)</span>
-                <span class="skill-badge">Embedded Linux Package Managers</span>
-            </div>
-        </div>
     </div>
 
     <footer>
