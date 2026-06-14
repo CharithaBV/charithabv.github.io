@@ -225,7 +225,12 @@
             position: relative;
             padding-bottom: 2rem;
             border-bottom: 1px solid var(--border-color);
-            transition: opacity 0.3s ease, transform 0.3s ease;
+            transition: opacity 0.3s ease, transform 0.3s ease, border-color 0.3s ease, padding-left 0.3s ease;
+            padding-left: 0;
+        }
+        .timeline-item:hover {
+            border-color: var(--primary-accent);
+            padding-left: 0.5rem;
         }
         .timeline-item.hidden {
             display: none;
@@ -385,11 +390,36 @@
             border-radius: 9999px;
             font-size: 0.85rem;
             font-weight: 500;
-            transition: all 0.2s ease;
+            transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
         }
         .skill-badge:hover {
             border-color: var(--text-muted);
             color: var(--text-heading);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Scroll Progress Bar */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(to right, #64748b, var(--primary-accent));
+            z-index: 1001;
+            width: 0%;
+            transition: width 0.1s ease-out;
+        }
+
+        /* Scroll Reveal CSS */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Top Bar Styles */
@@ -508,6 +538,7 @@
     </style>
 </head>
 <body>
+    <div id="scroll-progress"></div>
     <div id="top-bar">
         <div class="dropdown">
             <button class="dropbtn" aria-label="Menu">
@@ -800,7 +831,7 @@
         const dropbtn = document.querySelector('.dropbtn');
         const dropdownContent = document.querySelector('.dropdown-content');
 
-        // Scroll Observer
+        // Scroll Observer for Top Bar
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (!entry.isIntersecting) {
@@ -813,6 +844,29 @@
         }, { threshold: 0 });
 
         observer.observe(mainName);
+
+        // Scroll Progress indicator
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            const progressEl = document.getElementById('scroll-progress');
+            if (progressEl) progressEl.style.width = scrolled + '%';
+        });
+
+        // Viewport Scroll Reveal Observer
+        const revealElements = document.querySelectorAll('h3, .summary-card, .timeline-item, .education-item, .skills-category, .hero');
+        revealElements.forEach(el => el.classList.add('reveal'));
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(el => revealObserver.observe(el));
 
         // Menu Toggle
         dropbtn.addEventListener('click', (e) => {
@@ -861,10 +915,19 @@
                 timelineItems.forEach(item => {
                     if (filterVal === 'all' || item.getAttribute('data-category') === filterVal) {
                         item.classList.remove('hidden');
-                        setTimeout(() => { item.style.opacity = '1'; }, 50);
+                        // Trigger reflow
+                        void item.offsetWidth;
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
                     } else {
                         item.style.opacity = '0';
-                        item.classList.add('hidden');
+                        item.style.transform = 'translateY(15px)';
+                        // Wait for transition to finish
+                        setTimeout(() => {
+                            if (item.style.opacity === '0') {
+                                item.classList.add('hidden');
+                            }
+                        }, 300);
                     }
                 });
             });
