@@ -433,35 +433,44 @@
             color: var(--text-heading);
             letter-spacing: -0.02em;
         }
-        .skills-list {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            line-height: 1.6;
+        .skills-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            flex: 1;
         }
-        .skills-list span {
-            display: inline-block;
-            color: var(--text-color);
+        .skill-badge {
+            background-color: var(--badge-bg);
+            color: var(--badge-text);
+            border: 1px solid var(--badge-border);
+            padding: 0.4rem 0.8rem;
+            border-radius: 9999px;
+            font-size: 0.8rem;
+            font-family: 'Geist', sans-serif;
             font-weight: 500;
             opacity: 0;
-            transform: translateY(5px);
-            transition: opacity 0.4s ease, transform 0.4s ease;
+            transform: translateY(10px);
+            transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, opacity 0.5s ease;
         }
-        .skills-card.active .skills-list span {
+        .skills-card.active .skill-badge {
             opacity: 1;
             transform: translateY(0);
+        }
+        .skills-card.active .skill-badge:hover {
+            border-color: var(--text-muted);
+            color: var(--text-heading);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
         }
         @media(min-width: 640px) {
             .skills-group {
                 flex-direction: row;
-                align-items: flex-start;
+                align-items: center;
                 gap: 2rem;
             }
             .skills-subtitle {
                 min-width: 180px;
                 max-width: 180px;
-            }
-            .skills-list {
-                flex: 1;
             }
         }
 
@@ -693,45 +702,45 @@
         <div class="skills-container">
             <div class="skills-group">
                 <span class="skills-subtitle">Product & Strategy</span>
-                <span class="skills-list">
-                    <span>Agile/Scrum Leadership</span> &bull; 
-                    <span>Roadmap Strategy</span> &bull; 
-                    <span>Backlog Prioritization</span> &bull; 
-                    <span>EVM/PERT/GANTT</span> &bull; 
-                    <span>TAM/UTAUT Frameworks</span> &bull; 
-                    <span>Stakeholder Management</span> &bull; 
-                    <span>Cross-Functional Leadership</span> &bull; 
-                    <span>AI/ML Product Development</span> &bull; 
-                    <span>User Research & Segmentation</span> &bull; 
-                    <span>Market & Competitive Analysis</span> &bull; 
-                    <span>Risk Assessment & Mitigation</span> &bull; 
-                    <span>KPI Definition & Tracking</span>
-                </span>
+                <div class="skills-badges">
+                    <span class="skill-badge">Agile/Scrum Leadership</span>
+                    <span class="skill-badge">Roadmap Strategy</span>
+                    <span class="skill-badge">Backlog Prioritization</span>
+                    <span class="skill-badge">EVM/PERT/GANTT</span>
+                    <span class="skill-badge">TAM/UTAUT Frameworks</span>
+                    <span class="skill-badge">Stakeholder Management</span>
+                    <span class="skill-badge">Cross-Functional Leadership</span>
+                    <span class="skill-badge">AI/ML Product Development</span>
+                    <span class="skill-badge">User Research & Segmentation</span>
+                    <span class="skill-badge">Market & Competitive Analysis</span>
+                    <span class="skill-badge">Risk Assessment & Mitigation</span>
+                    <span class="skill-badge">KPI Definition & Tracking</span>
+                </div>
             </div>
 
             <div class="skills-group">
                 <span class="skills-subtitle">Technical & Analytical</span>
-                <span class="skills-list">
-                    <span>Python Engineering</span> &bull; 
-                    <span>Scikit-learn Modeling</span> &bull; 
-                    <span>SQL Architecture</span> &bull; 
-                    <span>Data Analytics</span> &bull; 
-                    <span>Hypothesis Testing</span> &bull; 
-                    <span>Qlik Cloud</span> &bull; 
-                    <span>Requirements Engineering</span> &bull; 
-                    <span>Technical Documentation</span>
-                </span>
+                <div class="skills-badges">
+                    <span class="skill-badge">Python Engineering</span>
+                    <span class="skill-badge">Scikit-learn Modeling</span>
+                    <span class="skill-badge">SQL Architecture</span>
+                    <span class="skill-badge">Data Analytics</span>
+                    <span class="skill-badge">Hypothesis Testing</span>
+                    <span class="skill-badge">Qlik Cloud</span>
+                    <span class="skill-badge">Requirements Engineering</span>
+                    <span class="skill-badge">Technical Documentation</span>
+                </div>
             </div>
 
             <div class="skills-group">
                 <span class="skills-subtitle">Cloud & Infrastructure</span>
-                <span class="skills-list">
-                    <span>Microsoft Azure IoT Hub</span> &bull; 
-                    <span>Google Cloud Platform (GCP)</span> &bull; 
-                    <span>Embedded Linux Package Managers</span> &bull; 
-                    <span>IoT Systems Integration</span> &bull; 
-                    <span>Embedded Systems Engineering</span>
-                </span>
+                <div class="skills-badges">
+                    <span class="skill-badge">Microsoft Azure IoT Hub</span>
+                    <span class="skill-badge">Google Cloud Platform (GCP)</span>
+                    <span class="skill-badge">Embedded Linux Package Managers</span>
+                    <span class="skill-badge">IoT Systems Integration</span>
+                    <span class="skill-badge">Embedded Systems Engineering</span>
+                </div>
             </div>
         </div>
     </div>
@@ -951,8 +960,8 @@
         });
 
         document.querySelectorAll('.skills-group').forEach(group => {
-            group.querySelectorAll('.skills-list span').forEach((span, index) => {
-                span.style.transitionDelay = `${index * 35}ms`;
+            group.querySelectorAll('.skill-badge').forEach((badge, index) => {
+                badge.style.transitionDelay = `${index * 45}ms`;
             });
         });
 
