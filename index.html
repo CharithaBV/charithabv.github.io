@@ -650,8 +650,8 @@
     <h3 id="experience">Professional Experience</h3>
     
     <div class="filter-container">
-        <button class="filter-btn active" data-filter="all">All Focus</button>
-        <button class="filter-btn" data-filter="product">Product & Strategy</button>
+        <button class="filter-btn" data-filter="all">All Focus</button>
+        <button class="filter-btn active" data-filter="product">Product & Strategy</button>
         <button class="filter-btn" data-filter="embedded">Embedded & Engineering</button>
     </div>
 
@@ -963,6 +963,12 @@
                 sectionIndicator.textContent = '';
             }
         });
+
+        // Trigger active filter on page load
+        const activeFilterBtn = document.querySelector('.filter-btn.active');
+        if (activeFilterBtn) {
+            activeFilterBtn.click();
+        }
     </script>
 </body>
 </html>
