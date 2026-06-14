@@ -14,10 +14,11 @@
             margin: 0 auto;
             padding: 2rem;
             background-color: #fdfdfd;
+            scroll-behavior: smooth;
         }
-        h1 { color: #0f172a; border-bottom: 2px solid #2563eb; padding-bottom: 0.5rem; margin-bottom: 0.5rem; }
+        h1 { color: #0f172a; border-bottom: 2px solid #2563eb; padding-bottom: 0.5rem; margin-bottom: 0.5rem; scroll-margin-top: 80px; }
         h2 { color: #1e293b; font-size: 1.25rem; margin-top: 0; }
-        h3 { color: #2563eb; margin-top: 2.5rem; border-left: 4px solid #2563eb; padding-left: 1rem; }
+        h3 { color: #2563eb; margin-top: 2.5rem; border-left: 4px solid #2563eb; padding-left: 1rem; scroll-margin-top: 80px; }
         h4 { color: #1e293b; margin-top: 1.5rem; margin-bottom: 0.5rem; }
         p { margin-top: 1rem; font-size: 1.1rem; }
         ul { padding-left: 1.2rem; }
@@ -36,11 +37,79 @@
         .summary-card a { color: #2563eb; text-decoration: none; font-weight: 600; }
         .summary-card a:hover { text-decoration: underline; }
         .summary-card ul { margin-top: 0.5rem; margin-bottom: 0; padding-left: 1.5rem; }
+
+        /* Top Bar Styles */
+        #top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 2rem;
+            z-index: 1000;
+            transform: translateY(-100%);
+            transition: transform 0.3s ease-in-out;
+            box-sizing: border-box;
+        }
+        #top-bar.visible { transform: translateY(0); }
+        #top-bar .name { font-weight: bold; font-size: 1.1rem; color: #0f172a; }
+        
+        /* Dropdown Styles */
+        .dropdown { position: relative; display: inline-block; }
+        .dropbtn {
+            background-color: #2563eb;
+            color: white;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 180px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 4px;
+            margin-top: 5px;
+        }
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9rem;
+        }
+        .dropdown-content a:hover { background-color: #f1f1f1; color: #2563eb; }
+        .dropdown:hover .dropdown-content { display: block; }
+
         footer { margin-top: 4rem; font-size: 0.8rem; color: #666; }
     </style>
 </head>
 <body>
-    <h1>Hello, I'm Charitha Reddy 👋</h1>
+    <div id="top-bar">
+        <div class="dropdown">
+            <button class="dropbtn">Contents ▾</button>
+            <div class="dropdown-content">
+                <a href="#highlights">Highlights</a>
+                <a href="#experience">Experience</a>
+                <a href="#education">Education</a>
+                <a href="#research">Research</a>
+                <a href="#skills">Skills</a>
+            </div>
+        </div>
+        <div class="name">Charitha Reddy</div>
+        <div style="width: 80px;"></div> <!-- Spacer for balance -->
+    </div>
+
+    <h1 id="main-name">Hello, I'm Charitha Reddy 👋</h1>
     <h2>Technical Product Manager | Embedded Systems & AI/IoT</h2>
 
     <p>I am a dynamic professional bridging engineering complexity with high-level business strategy. With a unique dual-postgraduate background—an <strong>M.Sc. in Management (Distinction)</strong> from the University of Liverpool and an <strong>M.Tech in Industrial Intelligent Systems</strong>—I specialize in translating technical capabilities into actionable product roadmaps.</p>
@@ -57,25 +126,25 @@
         </ul>
     </div>
 
-    <h3>Key Highlights & Awards</h3>
+    <h3 id="highlights">Key Highlights & Awards</h3>
     <ul>
-        <li><span class="highlight">Award-Winning Academic Leadership:</span> Awarded <strong>'Student of the Year' (2025/2026)</strong> at the University of Liverpool for outstanding academic performance and strategic management acuity.</li>
+        <li><span class="highlight">Award-Winning Academic Leadership:</span> Awarded <strong>'Student of the Year' (2025-2026)</strong> at the University of Liverpool for outstanding academic performance and strategic management acuity.</li>
         <li><span class="highlight">Dual Distinction:</span> Graduated with Distinction in both M.Sc. Management (GPA Eq: 4.0/4.0) and M.Tech Industrial Intelligent Systems (CGPA 8.3/10.0).</li>
         <li><span class="highlight">Published Researcher:</span> Authored peer-reviewed IEEE conference paper on ML-based fault detection using thermal imaging.</li>
         <li><span class="highlight">Socio-Technical System Fluency:</span> Trained to bridge engineering designs with high-level strategy using TAM and UTAUT frameworks.</li>
         <li><span class="highlight">Business Simulation Leadership:</span> Achieved a <strong>Top 6 ranking</strong> in a high-volatility market simulation at UoL, managing end-to-end car business operations from technical R&D to financial equity.</li>
     </ul>
 
-    <h3>Professional Experience</h3>
+    <h3 id="experience">Professional Experience</h3>
     <ul class="project-list">
         <li>
             <strong>Claims Handler (Recoveries) | Liverpool, UK</strong>
-            <em>April 2026 – Present</em>
+            <em>April 2026 - Present</em>
             <p>Managing high-volume recovery claims through critical problem-solving and strategic decision-making. Facilitating end-to-end communication between insured parties, third-party insurers, and stakeholders using advanced virtual claim management tools. Demonstrated high adaptability and software proficiency in a fast-paced environment while ensuring operational accuracy and risk mitigation.</p>
         </li>
         <li>
             <strong>Technical Product Manager | Vosyn, Ontario, Canada (Remote)</strong>
-            <em>July 2025 – April 2026</em>
+            <em>July 2025 - April 2026</em>
             <p>Full roadmap strategy ownership, backlog prioritization, user story definition, and cross-functional pod management for a fast-growing B2C product line. Directed product pipeline integration to accelerate release cadences and drove software experimentation to validate feature directions.</p>
         </li>
         <li>
@@ -95,24 +164,24 @@
         </li>
         <li>
             <strong>Embedded Systems Engineer | Detect Technologies, Chennai, India</strong>
-            <em>September 2022 – December 2024</em>
+            <em>September 2022 - December 2024</em>
             <p>Designed and implemented automated fault detection architectures for the heavy industrial Oil & Gas sector, improving deployment efficiency by 20%. Led cross-functional teams in Python automation workflows and system-level debugging across edge cameras and hardware platforms.</p>
         </li>
         <li>
             <strong>Electronics Engineer Intern | Detect Technologies, Chennai, India</strong>
-            <em>October 2021 – July 2022</em>
+            <em>October 2021 - July 2022</em>
             <p>Developed a Python-based IoT monitoring application with direct Microsoft Azure Cloud integration, providing critical diagnostic insights and technical bottleneck resolution.</p>
         </li>
     </ul>
 
-    <h3>Education</h3>
+    <h3 id="education">Education</h3>
     <ul>
-        <li><span class="highlight">M.Sc. in Management</span> | University of Liverpool, UK (Jan 2025 – Jan 2026) <br><em>Graduated with Distinction (GPA Eq: 4.0/4.0). Major in Strategic Organization, Project Management, and Business Analytics.</em></li>
-        <li><span class="highlight">M.Tech in Industrial Intelligent Systems</span> | Amrita Vishwa Vidyapeetham, India (Sept 2020 – July 2022) <br><em>First Class with Distinction (CGPA: 8.3/10.0). Focus on predictive framework designs and smart system diagnostics.</em></li>
-        <li><span class="highlight">B.E. in Electronics & Communication Engineering</span> | Muthayammal Engineering College, India (Oct 2015 – April 2019) <br><em>First Class (CGPA: 7.56/10.0).</em></li>
+        <li><span class="highlight">M.Sc. in Management</span> | University of Liverpool, UK (Jan 2025 - Jan 2026) <br><em>Graduated with Distinction (GPA Eq: 4.0/4.0). Major in Strategic Organization, Project Management, and Business Analytics.</em></li>
+        <li><span class="highlight">M.Tech in Industrial Intelligent Systems</span> | Amrita Vishwa Vidyapeetham, India (Sept 2020 - July 2022) <br><em>First Class with Distinction (CGPA: 8.3/10.0). Focus on predictive framework designs and smart system diagnostics.</em></li>
+        <li><span class="highlight">B.E. in Electronics & Communication Engineering</span> | Muthayammal Engineering College, India (Oct 2015 - April 2019) <br><em>First Class (CGPA: 7.56/10.0).</em></li>
     </ul>
 
-    <h3>Research & Publications</h3>
+    <h3 id="research">Research & Publications</h3>
     <ul>
         <li><span class="highlight">Master's Thesis (UoL):</span> <a href="https://drive.google.com/file/d/16tqmgfeqgHfBCvGCIFynDcH5d9a4e0YO/view?usp=sharing" target="_blank">"What managerial, clinical, and operational factors influence the adoption and effectiveness of drone-based medical transport for time-critical healthcare items?"</a> (Systematic literature review using TAM/UTAUT lenses).</li>
         <li><span class="highlight">Digital Marketing Strategy:</span> <a href="https://drive.google.com/file/d/13p_c2FCjYzzNXGNFiF7yFVvd4-RRtjrq/view?usp=sharing" target="_blank">"The Bears of Blueberry Forest"</a> – A proactive initiative enhancing pediatric mental health and emotional intelligence through educational storytelling.</li>
@@ -120,7 +189,7 @@
         <li><span class="highlight">Methods & Frameworks:</span> Engineered automated condition monitoring pipelines, image segmentation engines, and supervised model deployments achieving up to 97.2% accuracy.</li>
     </ul>
 
-    <h3>Skills & Competencies</h3>
+    <h3 id="skills">Skills & Competencies</h3>
     <ul>
         <li><span class="highlight">Product & Strategy:</span> Agile/Scrum Leadership, Roadmap Strategy, Backlog Prioritization, EVM/PERT/GANTT, TAM/UTAUT Frameworks.</li>
         <li><span class="highlight">Technical & Analytical:</span> Python Engineering, Scikit-learn Modeling, SQL Architecture, Data Analytics, Hypothesis Testing, Qlik Cloud.</li>
@@ -130,5 +199,19 @@
     <footer>
         <p>&copy; <script>document.write(new Date().getFullYear())</script> Charitha Reddy</p>
     </footer>
+
+    <script>
+        const topBar = document.getElementById('top-bar');
+        const mainName = document.getElementById('main-name');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) topBar.classList.add('visible');
+                else topBar.classList.remove('visible');
+            });
+        }, { threshold: 0 });
+
+        observer.observe(mainName);
+    </script>
 </body>
 </html>
