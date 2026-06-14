@@ -390,9 +390,15 @@
             border-radius: 9999px;
             font-size: 0.85rem;
             font-weight: 500;
-            transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, opacity 0.5s ease;
         }
-        .skill-badge:hover {
+        .skills-category.active .skill-badge {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .skills-category.active .skill-badge:hover {
             border-color: var(--text-muted);
             color: var(--text-heading);
             transform: translateY(-2px);
@@ -406,6 +412,7 @@
             left: 0;
             height: 3px;
             background: linear-gradient(to right, #64748b, var(--primary-accent));
+            box-shadow: 0 0 8px var(--primary-accent), 0 0 4px var(--primary-accent);
             z-index: 1001;
             width: 0%;
             transition: width 0.1s ease-out;
@@ -418,6 +425,17 @@
             transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered Item reveal */
+        .reveal-item {
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .active .reveal-item {
             opacity: 1;
             transform: translateY(0);
         }
@@ -650,13 +668,14 @@
     <h3 id="experience">Professional Experience</h3>
     
     <div class="filter-container">
-        <button class="filter-btn" data-filter="all">All Focus</button>
-        <button class="filter-btn active" data-filter="product">Product & Strategy</button>
+        <button class="filter-btn active" data-filter="all">All Focus</button>
+        <button class="filter-btn" data-filter="product">Product & Strategy</button>
+        <button class="filter-btn" data-filter="operations">Operations & Claims</button>
         <button class="filter-btn" data-filter="embedded">Embedded & Engineering</button>
     </div>
 
     <div class="timeline">
-        <div class="timeline-item" data-category="product">
+        <div class="timeline-item" data-category="operations">
             <div class="timeline-header">
                 <div>
                     <span class="timeline-title">Claims Handler (Recoveries)</span>
@@ -854,8 +873,20 @@
             if (progressEl) progressEl.style.width = scrolled + '%';
         });
 
+        // Setup staggered reveal transition delays for sub-items
+        document.querySelectorAll('.highlight-list li').forEach((li, index) => {
+            li.classList.add('reveal-item');
+            li.style.transitionDelay = `${index * 65}ms`;
+        });
+
+        document.querySelectorAll('.skills-category').forEach(cat => {
+            cat.querySelectorAll('.skill-badge').forEach((badge, index) => {
+                badge.style.transitionDelay = `${index * 55}ms`;
+            });
+        });
+
         // Viewport Scroll Reveal Observer
-        const revealElements = document.querySelectorAll('h3, .summary-card, .timeline-item, .education-item, .skills-category, .hero');
+        const revealElements = document.querySelectorAll('h3, .summary-card, .timeline-item, .education-item, .skills-category, .hero, .highlight-list');
         revealElements.forEach(el => el.classList.add('reveal'));
 
         const revealObserver = new IntersectionObserver((entries) => {
@@ -901,7 +932,7 @@
             localStorage.setItem('theme', target);
         });
 
-        // Interactive Timeline Filter
+        // Interactive Timeline Filter with Staggered Cascaded Load
         const filterBtns = document.querySelectorAll('.filter-btn');
         const timelineItems = document.querySelectorAll('.timeline-item');
 
@@ -911,15 +942,30 @@
                 btn.classList.add('active');
 
                 const filterVal = btn.getAttribute('data-filter');
+                let visibleIndex = 0;
 
                 timelineItems.forEach(item => {
                     if (filterVal === 'all' || item.getAttribute('data-category') === filterVal) {
                         item.classList.remove('hidden');
                         // Trigger reflow
                         void item.offsetWidth;
+                        
+                        // Temporarily set stagger delay
+                        item.style.transitionDelay = `${visibleIndex * 60}ms`;
                         item.style.opacity = '1';
                         item.style.transform = 'translateY(0)';
+                        
+                        // Reset transition delay after transition finishes so hover actions trigger instantly
+                        const currentDelay = visibleIndex * 60;
+                        setTimeout(() => {
+                            if (item.style.opacity === '1') {
+                                item.style.transitionDelay = '0s';
+                            }
+                        }, 500 + currentDelay);
+
+                        visibleIndex++;
                     } else {
+                        item.style.transitionDelay = '0s';
                         item.style.opacity = '0';
                         item.style.transform = 'translateY(15px)';
                         // Wait for transition to finish
@@ -964,7 +1010,7 @@
             }
         });
 
-        // Trigger active filter on page load
+        // Trigger active filter on page load (All Focus)
         const activeFilterBtn = document.querySelector('.filter-btn.active');
         if (activeFilterBtn) {
             activeFilterBtn.click();
