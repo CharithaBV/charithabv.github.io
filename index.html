@@ -6,41 +6,304 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Charitha Reddy | Technical Product Manager | AI & IoT</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.7;
             color: #334155;
             max-width: 800px;
             margin: 0 auto;
             padding: 3rem 2rem;
-            background-color: #f8fafc;
+            background-color: #fafafa;
             scroll-behavior: smooth;
         }
-        h1 { color: #0f172a; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.75rem; margin-bottom: 1.5rem; scroll-margin-top: 80px; font-weight: 700; font-size: 2.2rem; }
-        h2 { color: #475569; font-size: 1.25rem; font-weight: 500; margin-top: 0; margin-bottom: 2rem; }
-        h3 { color: #0f172a; margin-top: 3rem; margin-bottom: 1.5rem; border-left: 3px solid #475569; padding-left: 0.75rem; scroll-margin-top: 80px; font-weight: 600; }
-        h4 { color: #1e293b; margin-top: 1.5rem; margin-bottom: 0.5rem; font-weight: 600; }
+
+        h1, h2, h3, h4 {
+            color: #0f172a;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { color: #475569; font-size: 1.2rem; font-weight: 500; margin-top: 0; margin-bottom: 1.5rem; }
+        h3 { color: #0f172a; font-size: 1.4rem; margin-top: 3.5rem; margin-bottom: 1.5rem; border-left: 3px solid #0f172a; padding-left: 0.75rem; scroll-margin-top: 80px; }
+        h4 { color: #1e293b; margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 1.1rem; }
+        
         p { margin-top: 1rem; font-size: 1.05rem; text-align: justify; }
         ul { padding-left: 1.2rem; }
         li { margin-bottom: 0.6rem; }
+        
         .highlight { font-weight: 600; color: #0f172a; }
-        .project-list { list-style-type: none; padding-left: 0; }
-        .project-list li { margin-bottom: 2rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 1.5rem; }
-        .project-list li:last-child { border-bottom: none; }
-        .project-list li strong { display: block; margin-bottom: 0.3rem; font-size: 1.15rem; color: #0f172a; }
-        .project-list li em { display: block; font-style: normal; color: #64748b; font-size: 0.95rem; margin-bottom: 0.75rem; }
-        .summary-card {
-            background-color: #f1f5f9;
-            border-left: 4px solid #475569;
-            padding: 1.25rem 1.5rem;
-            margin: 2rem 0;
-            border-radius: 0 8px 8px 0;
+
+        /* Modern Hero Header */
+        .hero {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e2e8f0;
         }
-        .summary-card a { color: #0f172a; text-decoration: underline; font-weight: 600; text-underline-offset: 2px; }
-        .summary-card a:hover { color: #475569; }
-        .summary-card ul { margin-top: 0.5rem; margin-bottom: 0; padding-left: 1.5rem; }
+
+        .contact-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            margin-top: 1.25rem;
+        }
+
+        .contact-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #64748b;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .contact-item:hover {
+            color: #0f172a;
+        }
+
+        .contact-item svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Summary Card */
+        .summary-card {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 1.5rem;
+            margin: 2.5rem 0;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.02);
+        }
+        .summary-card strong {
+            display: block;
+            font-size: 1.05rem;
+            color: #0f172a;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        .summary-card ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 0;
+            display: grid;
+            gap: 0.75rem;
+        }
+        .summary-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+        .summary-card a {
+            color: #0f172a;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 1px solid #cbd5e1;
+            transition: all 0.2s ease;
+        }
+        .summary-card a:hover {
+            color: #475569;
+            border-bottom-color: #475569;
+        }
+
+        /* Highlights */
+        .highlight-list {
+            list-style-type: none;
+            padding-left: 0;
+            display: grid;
+            gap: 1rem;
+        }
+        .highlight-list li {
+            position: relative;
+            padding-left: 1.75rem;
+            margin-bottom: 0;
+            font-size: 1.05rem;
+        }
+        .highlight-list li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: #64748b;
+            font-weight: bold;
+        }
+
+        /* Timeline / Project List */
+        .timeline {
+            display: grid;
+            gap: 2rem;
+            position: relative;
+            margin-top: 1.5rem;
+        }
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .timeline-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .timeline-header {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+        @media(min-width: 640px) {
+            .timeline-header {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+        .timeline-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #0f172a;
+        }
+        .timeline-meta {
+            font-size: 0.95rem;
+            color: #64748b;
+            font-weight: 500;
+            margin-top: 0.25rem;
+        }
+        .timeline-date {
+            font-size: 0.85rem;
+            color: #475569;
+            font-weight: 600;
+            background: #e2e8f0;
+            padding: 0.3rem 0.75rem;
+            border-radius: 9999px;
+            white-space: nowrap;
+        }
+        .timeline-desc {
+            margin-top: 0.5rem;
+            font-size: 1.025rem;
+            text-align: justify;
+        }
+
+        /* Education */
+        .education-list {
+            display: grid;
+            gap: 2rem;
+        }
+        .education-item {
+            display: grid;
+            gap: 0.25rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .education-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .edu-header {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 0.25rem;
+        }
+        @media(min-width: 640px) {
+            .edu-header {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+        .edu-degree {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #0f172a;
+        }
+        .edu-school {
+            font-size: 1rem;
+            color: #475569;
+            font-weight: 500;
+        }
+        .edu-date {
+            font-size: 0.85rem;
+            color: #475569;
+            font-weight: 600;
+            background: #e2e8f0;
+            padding: 0.3rem 0.75rem;
+            border-radius: 9999px;
+            white-space: nowrap;
+        }
+        .edu-details {
+            font-size: 0.95rem;
+            color: #64748b;
+            font-style: italic;
+            margin-top: 0.25rem;
+        }
+
+        /* Research list */
+        .research-list {
+            list-style-type: none;
+            padding-left: 0;
+            display: grid;
+            gap: 1.5rem;
+        }
+        .research-item {
+            position: relative;
+            padding-left: 0;
+        }
+        .research-item a {
+            color: #0f172a;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 1px solid #cbd5e1;
+            transition: all 0.2s ease;
+        }
+        .research-item a:hover {
+            color: #475569;
+            border-bottom-color: #475569;
+        }
+
+        /* Skills Badges */
+        .skills-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+        .skills-category {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 1.25rem;
+            border-radius: 12px;
+        }
+        .skills-category h4 {
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+            color: #0f172a;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        .skills-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .skill-badge {
+            background-color: #ffffff;
+            color: #334155;
+            border: 1px solid #e2e8f0;
+            padding: 0.35rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        .skill-badge:hover {
+            border-color: #94a3b8;
+            color: #0f172a;
+        }
 
         /* Top Bar Styles */
         #top-bar {
@@ -131,25 +394,66 @@
         <div style="width: 36px;"></div> <!-- Spacer for balance matching the button dimensions -->
     </div>
 
-    <h1 id="main-name">Hello, I'm Charitha Reddy 👋</h1>
-    <h2>Technical Product Manager | Embedded Systems & AI/IoT</h2>
+    <div class="hero">
+        <h1 id="main-name">Charitha Reddy</h1>
+        <h2>Technical Product Manager | Embedded Systems & AI/IoT</h2>
+        
+        <div class="contact-bar">
+            <span class="contact-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                Liverpool, UK
+            </span>
+            <a href="mailto:charithareddy.bv@gmail.com" class="contact-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                charithareddy.bv@gmail.com
+            </a>
+            <a href="https://linkedin.com/in/charithareddy" target="_blank" class="contact-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                LinkedIn
+            </a>
+            <a href="https://github.com/CharithaBV" target="_blank" class="contact-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                GitHub
+            </a>
+        </div>
+    </div>
 
     <p>I am a dynamic professional bridging engineering complexity with high-level business strategy. With a unique dual-postgraduate background (an <strong>M.Sc. in Management (Distinction)</strong> from the University of Liverpool and an <strong>M.Tech in Industrial Intelligent Systems</strong>), I specialize in translating technical capabilities into actionable product roadmaps.</p>
 
     <p>My expertise spans across <strong>Python engineering, automated fault detection, and cloud infrastructures (GCP/Azure)</strong>, coupled with advanced project management proficiencies (Agile, Scrum, EVM). I am passionate about responsible AI deployment, industrial efficiency, and driving product innovation from concept to market.</p>
 
     <div class="summary-card">
-        <strong>Featured Research & Publications:</strong>
+        <strong>Featured Research & Publications</strong>
         <ul>
-            <li>🎓 <strong>MiM Master's Thesis (UoL):</strong> <a href="https://drive.google.com/file/d/16tqmgfeqgHfBCvGCIFynDcH5d9a4e0YO/view?usp=sharing" target="_blank">View Thesis on Drone-based Medical Transport</a></li>
-            <li> <strong>Business Strategy (UoL):</strong> Hybronn Motors <a href="https://drive.google.com/file/d/1VUiME-0DOY8nlQmQccGQa4IQpcCDM4jH/view?usp=sharing" target="_blank">Simulation</a> & <a href="https://drive.google.com/file/d/1KvNx1DDTGCauZAztUpW7JObvPeME2xEb/view?usp=sharing" target="_blank">Reflective Poster</a></li>
-            <li>📱 <strong>Digital Marketing (UoL):</strong> <a href="https://drive.google.com/file/d/13p_c2FCjYzzNXGNFiF7yFVvd4-RRtjrq/view?usp=sharing" target="_blank">The Bears of Blueberry Forest Campaign</a></li>
-            <li>📄 <strong>IEEE Publication:</strong> <a href="https://doi.org/10.1109/ICESC54411.2022.9885282" target="_blank">Machine Learning Based Fault Detection in Induction Motor using Thermal Imaging</a></li>
+            <li>
+                <span>🎓</span>
+                <div>
+                    <span class="highlight">MiM Master's Thesis (UoL):</span> <a href="https://drive.google.com/file/d/16tqmgfeqgHfBCvGCIFynDcH5d9a4e0YO/view?usp=sharing" target="_blank">View Thesis on Drone-based Medical Transport</a>
+                </div>
+            </li>
+            <li>
+                <span>💼</span>
+                <div>
+                    <span class="highlight">Business Strategy (UoL):</span> Hybronn Motors <a href="https://drive.google.com/file/d/1VUiME-0DOY8nlQmQccGQa4IQpcCDM4jH/view?usp=sharing" target="_blank">Simulation</a> & <a href="https://drive.google.com/file/d/1KvNx1DDTGCauZAztUpW7JObvPeME2xEb/view?usp=sharing" target="_blank">Reflective Poster</a>
+                </div>
+            </li>
+            <li>
+                <span>📱</span>
+                <div>
+                    <span class="highlight">Digital Marketing (UoL):</span> <a href="https://drive.google.com/file/d/13p_c2FCjYzzNXGNFiF7yFVvd4-RRtjrq/view?usp=sharing" target="_blank">The Bears of Blueberry Forest Campaign</a>
+                </div>
+            </li>
+            <li>
+                <span>📄</span>
+                <div>
+                    <span class="highlight">IEEE Publication:</span> <a href="https://doi.org/10.1109/ICESC54411.2022.9885282" target="_blank">Machine Learning Based Fault Detection in Induction Motor using Thermal Imaging</a>
+                </div>
+            </li>
         </ul>
     </div>
 
     <h3 id="highlights">Key Highlights & Awards</h3>
-    <ul>
+    <ul class="highlight-list">
         <li><span class="highlight">Award-Winning Academic Leadership:</span> Awarded <strong>'Student of the Year' (2025-2026)</strong> at the University of Liverpool for outstanding academic performance and strategic management acuity.</li>
         <li><span class="highlight">Dual Distinction:</span> Graduated with Distinction in both M.Sc. Management (GPA Eq: 4.0/4.0) and M.Tech Industrial Intelligent Systems (CGPA 8.3/10.0).</li>
         <li><span class="highlight">Published Researcher:</span> Authored peer-reviewed IEEE conference paper on ML-based fault detection using thermal imaging.</li>
@@ -158,65 +462,171 @@
     </ul>
 
     <h3 id="experience">Professional Experience</h3>
-    <ul class="project-list">
-        <li>
-            <strong>Claims Handler (Recoveries) | Liverpool, UK</strong>
-            <em>April 2026 - Present</em>
-            <p>Managing high-volume recovery claims through critical problem-solving and strategic decision-making. Facilitating end-to-end communication between insured parties, third-party insurers, and stakeholders using advanced virtual claim management tools. Demonstrated high adaptability and software proficiency in a fast-paced environment while ensuring operational accuracy and risk mitigation.</p>
-        </li>
-        <li>
-            <strong>Technical Product Manager | Vosyn, Ontario, Canada (Remote)</strong>
-            <em>July 2025 - April 2026</em>
-            <p>Full roadmap strategy ownership, backlog prioritization, user story definition, and cross-functional pod management for a fast-growing B2C product line. Directed product pipeline integration to accelerate release cadences and drove software experimentation to validate feature directions.</p>
-        </li>
-        <li>
-            <strong>Strategic Consultant | EQ for All Foundation, UK</strong>
-            <em>March 2025</em>
-            <p>Conducted user segmentation and funnel analysis to map drop-off trends, delivering a comprehensive strategic report that optimized content reach by an estimated 25% and boosted engagement.</p>
-        </li>
-        <li>
-            <strong>Strategic Lead (Business Simulation) | Hybronn Motors, UoL</strong>
-            <em>MiM Academic Project, 2025</em>
-            <p>Led a virtual automotive enterprise in a competitive market simulation, overseeing technical customization, cost optimization, and R&D. Developed a strategic grant proposal for manufacturing retrofit kits and managed financial equity to achieve a Top 6 overall ranking. <br>• <a href="https://drive.google.com/file/d/1VUiME-0DOY8nlQmQccGQa4IQpcCDM4jH/view?usp=sharing" target="_blank">View Presentation</a> | <a href="https://drive.google.com/file/d/1KvNx1DDTGCauZAztUpW7JObvPeME2xEb/view?usp=sharing" target="_blank">View Reflective Poster</a></p>
-        </li>
-        <li>
-            <strong>Digital Marketing Strategist | The Bears of Blueberry Forest, UoL</strong>
-            <em>MiM Academic Project, 2025</em>
-            <p>Developed an integrated marketing strategy for "The Bears of Blueberry Forest" to promote children's mental health. Defined SMART goals for community engagement across social platforms and mapped a roadmap for global franchise scalability. <br>• <a href="https://drive.google.com/file/d/13p_c2FCjYzzNXGNFiF7yFVvd4-RRtjrq/view?usp=sharing" target="_blank">View Project Report</a></p>
-        </li>
-        <li>
-            <strong>Embedded Systems Engineer | Detect Technologies, Chennai, India</strong>
-            <em>September 2022 - December 2024</em>
-            <p>Designed and implemented automated fault detection architectures for the heavy industrial Oil & Gas sector, improving deployment efficiency by 20%. Led cross-functional teams in Python automation workflows and system-level debugging across edge cameras and hardware platforms.</p>
-        </li>
-        <li>
-            <strong>Electronics Engineer Intern | Detect Technologies, Chennai, India</strong>
-            <em>October 2021 - July 2022</em>
-            <p>Developed a Python-based IoT monitoring application with direct Microsoft Azure Cloud integration, providing critical diagnostic insights and technical bottleneck resolution.</p>
-        </li>
-    </ul>
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-header">
+                <div>
+                    <span class="timeline-title">Claims Handler (Recoveries)</span>
+                    <div class="timeline-meta">Liverpool, UK</div>
+                </div>
+                <span class="timeline-date">April 2026 - Present</span>
+            </div>
+            <p class="timeline-desc">Managing high-volume recovery claims through critical problem-solving and strategic decision-making. Facilitating end-to-end communication between insured parties, third-party insurers, and stakeholders using advanced virtual claim management tools. Demonstrated high adaptability and software proficiency in a fast-paced environment while ensuring operational accuracy and risk mitigation.</p>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-header">
+                <div>
+                    <span class="timeline-title">Technical Product Manager</span>
+                    <div class="timeline-meta">Vosyn | Ontario, Canada (Remote)</div>
+                </div>
+                <span class="timeline-date">July 2025 - April 2026</span>
+            </div>
+            <p class="timeline-desc">Full roadmap strategy ownership, backlog prioritization, user story definition, and cross-functional pod management for a fast-growing B2C product line. Directed product pipeline integration to accelerate release cadences and drove software experimentation to validate feature directions.</p>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-header">
+                <div>
+                    <span class="timeline-title">Strategic Consultant</span>
+                    <div class="timeline-meta">EQ for All Foundation | UK</div>
+                </div>
+                <span class="timeline-date">March 2025</span>
+            </div>
+            <p class="timeline-desc">Conducted user segmentation and funnel analysis to map drop-off trends, delivering a comprehensive strategic report that optimized content reach by an estimated 25% and boosted engagement.</p>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-header">
+                <div>
+                    <span class="timeline-title">Strategic Lead (Business Simulation)</span>
+                    <div class="timeline-meta">Hybronn Motors, UoL | MiM Academic Project</div>
+                </div>
+                <span class="timeline-date">2025</span>
+            </div>
+            <p class="timeline-desc">Led a virtual automotive enterprise in a competitive market simulation, overseeing technical customization, cost optimization, and R&D. Developed a strategic grant proposal for manufacturing retrofit kits and managed financial equity to achieve a Top 6 overall ranking. <br>• <a href="https://drive.google.com/file/d/1VUiME-0DOY8nlQmQccGQa4IQpcCDM4jH/view?usp=sharing" target="_blank">View Presentation</a> | <a href="https://drive.google.com/file/d/1KvNx1DDTGCauZAztUpW7JObvPeME2xEb/view?usp=sharing" target="_blank">View Reflective Poster</a></p>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-header">
+                <div>
+                    <span class="timeline-title">Digital Marketing Strategist</span>
+                    <div class="timeline-meta">The Bears of Blueberry Forest, UoL | MiM Academic Project</div>
+                </div>
+                <span class="timeline-date">2025</span>
+            </div>
+            <p class="timeline-desc">Developed an integrated marketing strategy for "The Bears of Blueberry Forest" to promote children's mental health. Defined SMART goals for community engagement across social platforms and mapped a roadmap for global franchise scalability. <br>• <a href="https://drive.google.com/file/d/13p_c2FCjYzzNXGNFiF7yFVvd4-RRtjrq/view?usp=sharing" target="_blank">View Project Report</a></p>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-header">
+                <div>
+                    <span class="timeline-title">Embedded Systems Engineer</span>
+                    <div class="timeline-meta">Detect Technologies | Chennai, India</div>
+                </div>
+                <span class="timeline-date">September 2022 - December 2024</span>
+            </div>
+            <p class="timeline-desc">Designed and implemented automated fault detection architectures for the heavy industrial Oil & Gas sector, improving deployment efficiency by 20%. Led cross-functional teams in Python automation workflows and system-level debugging across edge cameras and hardware platforms.</p>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-header">
+                <div>
+                    <span class="timeline-title">Electronics Engineer Intern</span>
+                    <div class="timeline-meta">Detect Technologies | Chennai, India</div>
+                </div>
+                <span class="timeline-date">October 2021 - July 2022</span>
+            </div>
+            <p class="timeline-desc">Developed a Python-based IoT monitoring application with direct Microsoft Azure Cloud integration, providing critical diagnostic insights and technical bottleneck resolution.</p>
+        </div>
+    </div>
 
     <h3 id="education">Education</h3>
-    <ul>
-        <li><span class="highlight">M.Sc. in Management</span> | University of Liverpool, UK (Jan 2025 - Jan 2026) <br><em>Graduated with Distinction (GPA Eq: 4.0/4.0). Major in Strategic Organization, Project Management, and Business Analytics.</em></li>
-        <li><span class="highlight">M.Tech in Industrial Intelligent Systems</span> | Amrita Vishwa Vidyapeetham, India (Sept 2020 - July 2022) <br><em>First Class with Distinction (CGPA: 8.3/10.0). Focus on predictive framework designs and smart system diagnostics.</em></li>
-        <li><span class="highlight">B.E. in Electronics & Communication Engineering</span> | Muthayammal Engineering College, India (Oct 2015 - April 2019) <br><em>First Class (CGPA: 7.56/10.0).</em></li>
-    </ul>
+    <div class="education-list">
+        <div class="education-item">
+            <div class="edu-header">
+                <div>
+                    <span class="edu-degree">M.Sc. in Management</span>
+                    <div class="edu-school">University of Liverpool, UK</div>
+                </div>
+                <span class="edu-date">Jan 2025 - Jan 2026</span>
+            </div>
+            <div class="edu-details">Graduated with Distinction (GPA Eq: 4.0/4.0). Major in Strategic Organization, Project Management, and Business Analytics.</div>
+        </div>
+
+        <div class="education-item">
+            <div class="edu-header">
+                <div>
+                    <span class="edu-degree">M.Tech in Industrial Intelligent Systems</span>
+                    <div class="edu-school">Amrita Vishwa Vidyapeetham, India</div>
+                </div>
+                <span class="edu-date">Sept 2020 - July 2022</span>
+            </div>
+            <div class="edu-details">First Class with Distinction (CGPA: 8.3/10.0). Focus on predictive framework designs and smart system diagnostics.</div>
+        </div>
+
+        <div class="education-item">
+            <div class="edu-header">
+                <div>
+                    <span class="edu-degree">B.E. in Electronics & Communication Engineering</span>
+                    <div class="edu-school">Muthayammal Engineering College, India</div>
+                </div>
+                <span class="edu-date">Oct 2015 - April 2019</span>
+            </div>
+            <div class="edu-details">First Class (CGPA: 7.56/10.0).</div>
+        </div>
+    </div>
 
     <h3 id="research">Research & Publications</h3>
-    <ul>
-        <li><span class="highlight">Master's Thesis (UoL):</span> <a href="https://drive.google.com/file/d/16tqmgfeqgHfBCvGCIFynDcH5d9a4e0YO/view?usp=sharing" target="_blank">"What managerial, clinical, and operational factors influence the adoption and effectiveness of drone-based medical transport for time-critical healthcare items?"</a> (Systematic literature review using TAM/UTAUT lenses).</li>
-        <li><span class="highlight">Digital Marketing Strategy:</span> <a href="https://drive.google.com/file/d/13p_c2FCjYzzNXGNFiF7yFVvd4-RRtjrq/view?usp=sharing" target="_blank">"The Bears of Blueberry Forest"</a>, a proactive initiative enhancing pediatric mental health and emotional intelligence through educational storytelling.</li>
-        <li><span class="highlight">IEEE Publication:</span> "Machine Learning Based Fault Detection in Induction Motor using Thermal Imaging." <em>IEEE ICESC 2022</em>. DOI: <a href="https://doi.org/10.1109/ICESC54411.2022.9885282" target="_blank">10.1109/ICESC54411.2022.9885282</a>.</li>
-        <li><span class="highlight">Methods & Frameworks:</span> Engineered automated condition monitoring pipelines, image segmentation engines, and supervised model deployments achieving up to 97.2% accuracy.</li>
+    <ul class="research-list">
+        <li class="research-item">
+            <span class="highlight">Master's Thesis (UoL):</span> <a href="https://drive.google.com/file/d/16tqmgfeqgHfBCvGCIFynDcH5d9a4e0YO/view?usp=sharing" target="_blank">"What managerial, clinical, and operational factors influence the adoption and effectiveness of drone-based medical transport for time-critical healthcare items?"</a> (Systematic literature review using TAM/UTAUT lenses).
+        </li>
+        <li class="research-item">
+            <span class="highlight">Digital Marketing Strategy:</span> <a href="https://drive.google.com/file/d/13p_c2FCjYzzNXGNFiF7yFVvd4-RRtjrq/view?usp=sharing" target="_blank">"The Bears of Blueberry Forest"</a>, a proactive initiative enhancing pediatric mental health and emotional intelligence through educational storytelling.
+        </li>
+        <li class="research-item">
+            <span class="highlight">IEEE Publication:</span> "Machine Learning Based Fault Detection in Induction Motor using Thermal Imaging." <em>IEEE ICESC 2022</em>. DOI: <a href="https://doi.org/10.1109/ICESC54411.2022.9885282" target="_blank">10.1109/ICESC54411.2022.9885282</a>.
+        </li>
+        <li class="research-item">
+            <span class="highlight">Methods & Frameworks:</span> Engineered automated condition monitoring pipelines, image segmentation engines, and supervised model deployments achieving up to 97.2% accuracy.
+        </li>
     </ul>
 
     <h3 id="skills">Skills & Competencies</h3>
-    <ul>
-        <li><span class="highlight">Product & Strategy:</span> Agile/Scrum Leadership, Roadmap Strategy, Backlog Prioritization, EVM/PERT/GANTT, TAM/UTAUT Frameworks.</li>
-        <li><span class="highlight">Technical & Analytical:</span> Python Engineering, Scikit-learn Modeling, SQL Architecture, Data Analytics, Hypothesis Testing, Qlik Cloud.</li>
-        <li><span class="highlight">Cloud & Infrastructure:</span> Microsoft Azure IoT Hub, Google Cloud Platform (GCP), Embedded Linux Package Managers.</li>
-    </ul>
+    <div class="skills-grid">
+        <div class="skills-category">
+            <h4>Product & Strategy</h4>
+            <div class="skills-badges">
+                <span class="skill-badge">Agile/Scrum Leadership</span>
+                <span class="skill-badge">Roadmap Strategy</span>
+                <span class="skill-badge">Backlog Prioritization</span>
+                <span class="skill-badge">EVM/PERT/GANTT</span>
+                <span class="skill-badge">TAM/UTAUT Frameworks</span>
+            </div>
+        </div>
+
+        <div class="skills-category">
+            <h4>Technical & Analytical</h4>
+            <div class="skills-badges">
+                <span class="skill-badge">Python Engineering</span>
+                <span class="skill-badge">Scikit-learn Modeling</span>
+                <span class="skill-badge">SQL Architecture</span>
+                <span class="skill-badge">Data Analytics</span>
+                <span class="skill-badge">Hypothesis Testing</span>
+                <span class="skill-badge">Qlik Cloud</span>
+            </div>
+        </div>
+
+        <div class="skills-category">
+            <h4>Cloud & Infrastructure</h4>
+            <div class="skills-badges">
+                <span class="skill-badge">Microsoft Azure IoT Hub</span>
+                <span class="skill-badge">Google Cloud Platform (GCP)</span>
+                <span class="skill-badge">Embedded Linux Package Managers</span>
+            </div>
+        </div>
+    </div>
 
     <footer>
         <p>&copy; <script>document.write(new Date().getFullYear())</script> Charitha Reddy</p>
